@@ -3,7 +3,7 @@ import {SearchIcon,GlobeAltIcon,MenuIcon,UserCircleIcon,UserIcon} from '@heroico
 
 const Header = () => {
   return (
-    <header className="sticky top-0 z-50 grid grid-cols-3 bg-[#191919] p-5 shadow-md md:px-10">
+    <header className="mx-auto sticky top-0 z-50 grid grid-cols-3 bg-[#191919] p-5 shadow-md md:px-10">
 
         {/* Left */}
         <div className="relative flex items-center h-10 cursor-pointer my-auto">
@@ -18,10 +18,10 @@ const Header = () => {
 
         {/* Right */}
         <div className="flex space-x-4 items-center justify-end text-gray-500 cursor-pointer">
-          <p className="hidden md:inline-flex">Become a host</p>
-          <GlobeAltIcon className="h-6"/>
+          <p className="hidden md:inline-flex hover:text-white">Become a host</p>
+          <GlobeAltIcon className="h-6 hover:text-white"/>
 
-          <div className="flex items-center space-x-1 border-2 p-2 border-gray-600 rounded-full">
+          <div className="flex items-center space-x-1 border-2 p-2 border-gray-600 hover:border-white hover:text-white rounded-full">
             <MenuIcon className="h-6"/>
             <UserCircleIcon className="h-6"/>
           </div>
