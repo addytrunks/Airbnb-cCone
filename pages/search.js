@@ -3,8 +3,9 @@ import React from 'react'
 import Footer from '../components/Footer'
 import Header from '../components/Header'
 import moment from 'moment'
+import InfoCard from '../components/InfoCard'
 
-const Search = () => {
+const Search = ({searchResults}) => {
 
     const router = useRouter()
     const {endDate,location,startDate,noOfGuests} = router.query
@@ -14,6 +15,7 @@ const Search = () => {
     const formattedStartDate = moment(startDate).format('Do MMMM yy')
     const formattedEndDate = moment(endDate).format('Do MMMM yy')
     const range = `${formattedStartDate} - ${formattedEndDate}`
+
 
   return (
     <div>
@@ -31,6 +33,12 @@ const Search = () => {
                     <p className='filter__button'>Rooms and Beds</p>
                     <p className='filter__button'>More Filters</p>
                 </div>
+
+                <div className='flex flex-col py-16'>
+                    {searchResults?.map(({location,img,title,description,star,price,total}) => (
+                        <InfoCard img={img} location={location} title={title} description={description} star={star} price={price} total={total} key={img}/>
+                    ))}
+                </div>
             </section>
             
         </main>
@@ -41,3 +49,12 @@ const Search = () => {
 }
 
 export default Search
+
+export async function getServerSideProps(){
+    const searchResults = await fetch('https://links.papareact.com/isz').then(res => res.json())
+    return {
+        props:{
+            searchResults
+        }
+    }
+}
