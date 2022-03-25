@@ -5,3 +5,9 @@
 body{
     background-color: #0F0E0E;
 }
+
+@layer components {
+    .filter__button{
+        @apply text-white px-4 py-2 border rounded-full hover:cursor-pointer hover:shadow-lg active:scale-95 active:bg-[#191919] transform duration-200 ease-out
+    }
+}

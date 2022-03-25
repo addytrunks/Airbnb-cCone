@@ -5,14 +5,17 @@ import 'react-date-range/dist/styles.css';
 import 'react-date-range/dist/theme/default.css';
 import { DateRangePicker } from 'react-date-range';
 import { addDays } from 'date-fns';
+import {useRouter} from 'next/router'
 
 
-const Header = () => {
+const Header = ({placeholder}) => {
 
   const [searchInput,setSearchInput] = useState('')
   const [startDate,setStartDate] = useState(new Date())
   const [endDate,setEndDate] = useState(addDays(new Date(), 7))
   const [noOfGuests,setNoOfGuests] = useState(1)
+
+  const router = useRouter()
 
   // Parameters for the date picker (MUST)
   const selectionRange = {
@@ -26,17 +29,30 @@ const Header = () => {
     setEndDate(ranges.selection.endDate)
   }
 
+  const search = () => {
+    router.push({
+      pathname:'/search',
+      query:{
+        location:searchInput,
+        startDate:startDate.toISOString(),
+        endDate:endDate.toISOString(),
+        noOfGuests
+      }
+    })
+    setSearchInput('')
+  }
+
   return (
     <header className="mx-auto sticky top-0 z-50 grid grid-cols-3 bg-[#191919] p-5 shadow-md md:px-10">
 
         {/* Left */}
-        <div className="relative flex items-center h-10 cursor-pointer my-auto">
+        <div onClick={() => router.push('/')} className="relative flex items-center h-10 cursor-pointer my-auto">
             <Image src="https://links.papareact.com/qd3" layout="fill" objectFit="contain" objectPosition="left"/>
         </div>
 
         {/* Middle */}
         <div className="flex items-center md:border-2 md:border-gray-600 rounded-full py-2">
-            <input value={searchInput} onChange={(e) => setSearchInput(e.target.value)} type="text" placeholder="Start your search" className="flex-grow text-sm font-medium text-white md:shadow-sm  pl-5 bg-transparent outline-none"/>
+            <input value={searchInput} onChange={(e) => setSearchInput(e.target.value)} type="text" placeholder={placeholder ? placeholder : "Start your Search"} className="flex-grow text-sm font-medium text-white md:shadow-sm  pl-5 bg-transparent outline-none"/>
             <SearchIcon className="hidden md:inline-flex h-8 bg-[#C8494D] text-white rounded-full p-2 cursor-pointer md:mx-3"/>
         </div>
 
@@ -71,7 +87,7 @@ const Header = () => {
 
             <div className="flex">
               <button onClick={() =>setSearchInput('')} className="flex-grow text-white font-medium">Cancel</button>
-              <button className="flex-grow text-[#C8494D] font-medium">Search</button>
+              <button onClick={search} className="flex-grow text-[#C8494D] font-medium">Search</button>
             </div>
 
           </div>
