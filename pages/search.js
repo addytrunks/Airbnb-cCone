@@ -3,9 +3,8 @@ import React from 'react'
 import Footer from '../components/Footer'
 import Header from '../components/Header'
 import moment from 'moment'
+import Head from 'next/head'
 import InfoCard from '../components/InfoCard'
-import Map from '../components/Map'
-import MapBox from '../components/Map'
 
 const Search = ({searchResults}) => {
 
@@ -21,6 +20,10 @@ const Search = ({searchResults}) => {
 
   return (
     <div>
+        <Head>
+            <title>Search | {location}</title>
+        </Head>
+        
         <Header placeholder={`${location} | ${range} | ${noOfGuests} guests`}/>
 
         <main className='flex'>
@@ -43,9 +46,6 @@ const Search = ({searchResults}) => {
                 </div>
             </section>
             
-            <section className='hidden xl:inline-flex xl:min-w-[600px]'>
-                <MapBox searchResults={searchResults}/>
-            </section>
         </main>
 
         <Footer/>

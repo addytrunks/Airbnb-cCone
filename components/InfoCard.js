@@ -5,7 +5,7 @@ import {HeartIcon} from '@heroicons/react/outline'
 
 const InfoCard = ({location,img,title,description,star,price,total}) => {
   return (
-    <div className="flex py-7 px-5 border-b-2 border-[#191919] cursor-pointer hover:opacity-90 hover:shadow-lg bg-[#191919] mb-5 rounded-lg hover:scale-95 transform duration-200 ease-out">
+    <div className="flex py-7 px-5 border-b-2 border-[#191919] cursor-pointer hover:opacity-90 hover:shadow-lg bg-[#191919] mb-5 rounded-lg hover:scale-[0.98] transform duration-200 ease-out">
         <div className="relative h-24 w-40 md:h-52 md:w-80 flex-shrink-0">
             <Image src={img} layout="fill" objectFit="cover" className="rounded-sm"/> 
         </div>
@@ -13,7 +13,7 @@ const InfoCard = ({location,img,title,description,star,price,total}) => {
         <div className="flex flex-col flex-grow pl-5">
             <div className="flex justify-between">
                 <p className="text-white">{location}</p>
-                <HeartIcon className="h-7 cursor-pointer text-white"/>
+                <HeartIcon className="h-7 active:text-[#C8494D] cursor-pointer text-white"/>
             </div>
             <h4 className="text-xl text-white font-medium">{title}</h4>
             <p className="pt-2 text-sm text-gray-400 flex-grow">{description}</p>
