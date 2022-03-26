@@ -4,6 +4,8 @@ import Footer from '../components/Footer'
 import Header from '../components/Header'
 import moment from 'moment'
 import InfoCard from '../components/InfoCard'
+import Map from '../components/Map'
+import MapBox from '../components/Map'
 
 const Search = ({searchResults}) => {
 
@@ -41,6 +43,9 @@ const Search = ({searchResults}) => {
                 </div>
             </section>
             
+            <section className='hidden xl:inline-flex xl:min-w-[600px]'>
+                <MapBox searchResults={searchResults}/>
+            </section>
         </main>
 
         <Footer/>

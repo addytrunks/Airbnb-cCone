@@ -1,7 +1,7 @@
 
 const Footer = () => {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-4 gap-y-10 px-32 py-14 bg-[#191919]">
+    <div className="grid grid-cols-1 md:grid-cols-4 gap-y-10 px-32 pb-30 py-14 bg-[#191919]">
         <div className="space-y-4 text-xs text-white">
             <h5 className="font-bold">ABOUT</h5>
             <p>How Airbnb works</p>
